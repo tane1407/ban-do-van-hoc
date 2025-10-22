@@ -63,9 +63,8 @@ window.LocalsModule = (function () {
 
   /* ---------- Author avatars management ---------- */
   function clearAuthorMarkers() {
-    // use ensureMap so we fail early and clearly if map not ready. CHANGED
-    const map = ensureMap(); // CHANGED
     authorMarkersGroup.clearLayers();
+    const map = window.map;
     if (map && map.hasLayer(authorMarkersGroup)) {
       map.removeLayer(authorMarkersGroup);
     }
@@ -119,13 +118,9 @@ window.LocalsModule = (function () {
       const posLatLng = map.layerPointToLatLng(pt);
 
       // build DivIcon for avatar
-      // NOTE: use a relative placeholder path and avoid hard-coded root path. CHANGED
-      const placeholder = './assets/imgs/placeholder.jpg'; // CHANGED
-      // We still escape author.name for title, but for src we leave the raw URL (or you may encodeURI)
-      const imgSrc = author.image ? author.image : placeholder; // CHANGED - do not double-escape the URL
       const avatarHtml = `
         <div class="author-avatar" title="${escapeHtml(author.name || '')}" style="width:${AUTHOR_AVATAR_SIZE}px;height:${AUTHOR_AVATAR_SIZE}px;border-radius:50%;overflow:hidden;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.25)">
-          <img src="${imgSrc}" style="width:100%;height:100%;object-fit:cover;display:block" alt="${escapeHtml(author.name||'')}">
+          <img src="${escapeHtml(author.image || 'assets/imgs/placeholder.jpg')}" style="width:100%;height:100%;object-fit:cover;display:block">
         </div>
       `;
       const icon = L.divIcon({
@@ -141,10 +136,7 @@ window.LocalsModule = (function () {
       aMarker.bindTooltip(author.name || '', { direction: 'top', offset: [0, -6], permanent: false, opacity: 0.95 });
 
       // click -> open author detail in sidebar
-      aMarker.on('click', (e) => {
-        // STOP propagation so map click handler does NOT immediately clear avatars. CHANGED
-        if (e) L.DomEvent.stopPropagation(e); // CHANGED
-
+      aMarker.on('click', () => {
         // save current place for back
         try { localStorage.setItem('currentPlaceObj', JSON.stringify(placeObj)); } catch(e){}
 
@@ -201,10 +193,7 @@ window.LocalsModule = (function () {
           mk._minZoomToShow = typeof item.minZoomToShow === 'number' ? item.minZoomToShow : GLOBAL_MIN_ZOOM;
 
           // on click -> zoom and show authors around
-          mk.on('click', (e) => {
-            // Prevent map click from clearing avatars (redundant but safe)
-            if (e) L.DomEvent.stopPropagation(e); // CHANGED
-
+          mk.on('click', () => {
             if (!map.hasLayer(mk)) mk.addTo(map);
             map.setView(mk.getLatLng(), ZOOM_ON_CLICK);
             mk.openPopup();
@@ -236,7 +225,8 @@ window.LocalsModule = (function () {
 
         // hide author avatars when clicking map background (unless clicking a marker)
         map.on('click', (ev) => {
-          // Because we stop propagation on marker clicks, this will only run when clicking background.
+          // if clicked on map (not marker), clear avatars
+          // Leaflet passes event with originalEvent; we can check target layer, but easiest is clear
           clearAuthorMarkers();
         });
 
