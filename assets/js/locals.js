@@ -1,8 +1,8 @@
 // assets/js/locals.js
 // Module quản lý các địa điểm (locals) và hiển thị marker + avatar tác giả khi click
 window.LocalsModule = (function () {
-  const DATA_URL = './Data/locals.json';
-  const AUTHORS_URL = './Data/authors.json';
+  const DATA_URL = '/Data/locals.json';
+  const AUTHORS_URL = '/Data/authors.json';
 
   const GLOBAL_MIN_ZOOM = 13;   // marker hiển khi zoom >= 13
   const ZOOM_ON_CLICK = 15;     // zoom target khi click marker
