@@ -5,7 +5,7 @@ window.AuthorsModule = (function () {
 
   // Load authors.json một lần
   (function loadAuthors() {
-    fetch("./data/authors.json")
+    fetch("/ban-do-van-hoc-hue/data/authors.json")
       .then((res) => {
         if (!res.ok) throw new Error("Cannot load authors.json");
         return res.json();
