@@ -1,0 +1,343 @@
+[
+  {
+    "id": "thieu-tri",
+    "name": "Thiệu Trị",
+    "birth": "1807",
+    "death": "1847",
+    "bio": "Thiệu Trị, húy là Nguyễn Phúc Dung, sau cải thành Nguyễn Phúc Miên Tông, là vị hoàng đế thứ ba của nhà Nguyễn nước Đại Nam. Ông kế vị vua cha là Minh Mạng, trị vì từ năm 1841 đến khi qua đời, tổng cộng gần 7 năm, được truy tôn miếu hiệu là Hiến Tổ, thụy hiệu Thiệu Thiên Chương Hoàng Đế. Trong thời gian trị vì ông chỉ sử dụng một niên hiệu là Thiệu Trị nên thường được gọi theo tên này.",
+    "life": "Thiệu Trị được sử sách mô tả là một hoàng đế thông minh, tận tụy chăm lo việc nước, uyên bác Nho học, yêu thích thơ ca.  ",
+    "works": [
+      "Vũ Trung Sơn Thủy (Cảnh trong mưa)",
+      "Phước Viên Văn hội lương dạ mạn ngâm (Đêm thơ ở Phước Viên)"
+    ],
+    "image": "assets/imgs/thieu-tri.png",
+    "place_id": "p1"
+  },
+  {
+    "id": "mien-tham",
+    "name": "Miên Thẩm",
+    "birth": "",
+    "death": "",
+    "bio": "Tùng Thiện Vương là con trai thứ 10 của Minh Mạng, sinh ngày 24 tháng 10 năm Kỷ Mão (tức 11 tháng 12 năm 1819) tại cung Thanh Hòa trong cấm thành Huế. Mẹ ông là Thục tần Nguyễn Khắc Thị Bảo, người Gia Định, rất giỏi chữ nghĩa.",
+    "life": "Ông rất chịu khó học tập, nên mới 8 tuổi (1827), nhân theo hầu vua Minh Mạng dự lễ Nam Giao, ông làm bài Nam Giao thi, rất được tán thưởng. ",
+    "works": ["Phù lưu tiền hành", "Mại trúc dao", "Kim hộ thán", "Bộ hổ từ"],
+    "image": "assets/imgs/mien-tham.png",
+    "place_id": "p1"
+  },
+  {
+    "id": "mai-am",
+    "name": "Công chúa Mai Am",
+    "birth": "1826",
+    "death": "1904",
+    "bio": "Nguyễn Phúc Trinh Thận (12/9/1826 – 3/1/1904), biểu tự Thúc Khanh, biệt hiệu Diệu Liên, lại có hiệu Mai Am, là một công chúa nhà Nguyễn và được biết đến như nữ danh sĩ Việt Nam cuối thế kỷ 19 đầu thế kỷ 20.",
+    "life": "",
+    "career": "Hầu hết những bài thơ còn lại của Mai Am đều nằm trong tập thơ chữ Hán mang tên Diệu Liên thi tập hay Lại Đức công chúa Diệu Liên tập, gồm 370 bài, chia làm 3 quyển, 1 bổ di, 1 phụ lục. Khoảng 370 bài thơ được sắp xếp theo thứ tự thời gian, có thể coi là một 'nhật ký' bằng thơ. Phần lớn các bài đều có lời dẫn, nhờ đó mang giá trị tư liệu quý về cuộc đời Mai Am và các danh sĩ cùng thời như Tùng Thiện Vương, Huệ Phố, Bà Huyện Thanh Quan, Bùi Dị, Nguyễn Hàm Ninh. Thơ của bà hoàn toàn bằng chữ Hán, theo thể thơ Đường, mang phong vị tinh tế, nhạy cảm, thể hiện tâm hồn nhân hậu và giàu nữ tính.",
+    "works": [
+      "Diệu Liên thi tập (Lại Đức công chúa Diệu Liên tập)",
+      "Nông phu từ (Lời nhà nông)"
+    ],
+    "genre": "Thơ chữ Hán, thơ Đường luật",
+    "image": "assets/imgs/mai-am.png",
+    "place_id": "p1"
+  },
+  {
+    "id": "ung-binh-thuc-gia-thi",
+    "name": "Ưng Bình Thúc Giạ Thị",
+    "birth": "1877",
+    "death": "1961",
+    "bio": "Ưng Bình Thúc Giạ Thị tên thật là Nguyễn Phúc Ưng Bình, sinh ra tại làng Vỹ Dạ, Huế, trong một gia đình hoàng tộc có truyền thống văn chương.",
+    "life": "Ưng Bình Thúc Giạ Thị được nhiều người yêu mến bởi tài thơ, tính khiêm cung, bình dị. Một đời ông dù là hoàng phái, từng làm quan cao, nhưng vẫn sống thanh đạm, giữ cái tâm thuần khiết và lòng yêu Huế sâu sắc.",
+    "career": "Ông sáng tác hàng ngàn bài thơ, gồm thơ chữ Hán (Lộc Minh thi tập – 227 bài) và thơ Nôm, Việt ngữ. Ngoài thơ, ông còn dịch và phóng tác tuồng Lệ Địch (Le Cid) của P. Corneille, sáng tác các tác phẩm như Bán buồn mua vui, Đời Thúc Giạ. Thơ của ông tập hợp trong Tiếng hát sông Hương (1972) và Thơ ca tuyển (1992). Ông yêu thiên nhiên và đất Huế tha thiết, nhiều câu hò Huế do ông sáng tác đã trở thành mẫu mực.",
+    "works": [
+      "Lộc Minh thi tập",
+      "Tiếng hát sông Hương (1972)",
+      "Thơ ca tuyển (1992)",
+      "Bán buồn mua vui",
+      "Đời Thúc Giạ"
+    ],
+    "genre": "Thơ Nôm, thơ chữ Hán, hò Huế",
+    "image": "assets/imgs/ung-binh-thuc-gia-thi.png",
+    "place_id": "p1"
+  },
+  {
+    "id": "hai-bang",
+    "name": "Hải Bằng ",
+    "birth": "1930",
+    "death": "?",
+
+    "bio": "Hải Bằng tên thật là Nguyễn Phúc Vĩnh Tôn , sinh tại Huế, con trai của quan quản đạo tỉnh Gia Lai và là chắt nội vua Hiệp Hòa – vị vua thứ sáu triều Nguyễn.",
+    "life": "Khi đã là một nhà thơ nổi tiếng, ông từng giải thích rằng bút danh 'Hải Bằng' được lấy từ hình ảnh con chim báo bão trên biển, biểu tượng của tự do và sức mạnh – điều ông luôn hướng tới trong đời sống và nghệ thuật.",
+    "career": "Hải Bằng đã xuất bản 13 tập thơ với nhiều thể loại. Ngoài thơ, ông còn sáng tác tranh và các tác phẩm nghệ thuật tạo hình bằng rễ cây, thường xuyên trưng bày trước công chúng. Ông dành trọn cuộc đời mình cho nghệ thuật, là một người tận hiến với thi ca và sáng tạo.",
+    "works": [
+      "13 tập thơ (không ghi rõ tên)",
+      "Các tác phẩm tạo hình bằng rễ cây"
+    ],
+    "genre": "Thơ hiện đại, nghệ thuật tạo hình",
+    "image": "assets/imgs/hai-bang.png",
+    "place_id": "p1"
+  },
+
+  {
+    "id": "ngo-the-lan",
+    "name": "Ngô Thế Lân",
+    "birth": "?",
+    "death": "?",
+
+    "bio": "Ngô Thế Lân, tự Hoàn Phác, hiệu Ái Trúc Trai, là một dật sĩ xứ Thuận Hoá thời Lê mạt và Tây Sơn. Ông sinh khoảng năm 1725 tại làng Vu Lai, huyện Quảng Điền, phủ Triệu Phong (nay thuộc xã Đan Điền, thành phố Huế). Ông sống phần lớn dưới thời chúa Nguyễn Phúc Khoát.",
+    "life": "Ngô Thế Lân là người học rộng, giỏi thơ văn, tinh thông đạo học, có tinh thần yêu nước, muốn ra cứu đời. Tuy nhiên, gặp lúc nước nhà rối ren, ông không ra làm quan cho chúa Nguyễn mà sống ẩn dật ở quê. Năm 1775, khi quân Trịnh chiếm Phú Xuân, Lê Quý Đôn mời ông cộng tác nhưng bị từ chối. Mãi đến khi Nguyễn Huệ đánh lấy Phú Xuân (1786), ông mới ra làm quan cho nhà Tây Sơn.",
+    "career": "Ngô Thế Lân là một nhà thơ Hán học tiêu biểu của xứ Thuận Hoá thế kỷ XVIII. Ông coi thơ không chỉ là thú vui mà là trách nhiệm của người có cảm xúc với cuộc đời. Thơ ông phong phú về nội dung, giàu hình tượng nghệ thuật, dùng nhiều ẩn dụ, ngụ ngôn để phê phán xã hội phong kiến thối nát, đồng thời bộc lộ tình yêu thiên nhiên và lòng thương cảm sâu sắc với người dân lao động. Thơ ông mang đậm phong vị Thiền tông và tinh thần nhân đạo.",
+    "works": [
+      "Phong trúc tập (2 quyển, viết bằng chữ Hán)",
+      "Tự thuật (Thuật chuyện mình)",
+      "Vu Lai ổ (Xóm Vu Lai)",
+      "Dã toạ (Ngồi ngoài cánh đồng)",
+      "Lạc Phố triêu canh (Buổi mai, cày ở Lạc Phố)",
+      "Sa phố vãn hành (Buổi chiều đi qua bến cát)",
+      "Vịnh hoài (Tỏ nỗi nhớ)",
+      "Trư điểu đề (Tiếng chim lợn kêu)",
+      "Hữu cảm (Có cảm xúc)",
+      "Thư hoài (Thơ tâm sự)",
+      "Hiểu khởi (Dậy sớm)",
+      "Sơn cư tức sự (Tức cảnh chỗ ở trên núi)"
+    ],
+    "genre": "Thơ chữ Hán, thơ ẩn dụ, ngụ ngôn, mang phong vị Thiền tông",
+    "image": "assets/imgs/no-picture.png ",
+    "place_id": "p2"
+  },
+
+  {
+    "id": "to-huu",
+    "name": "Tố Hữu ",
+    "birth": "1920",
+    "death": "2002",
+    "bio": "Tố Hữu tên thật là Nguyễn Kim Thành, bí danh là Lành, sinh ngày 4-10-1920 tại xã Quảng Thọ, huyện Quảng Điền (nay là xã Quảng Điền), thành phố Huế. Ông xuất thân trong một gia đình có truyền thống cách mạng và là một trong những nhà thơ lớn nhất của nền thơ ca cách mạng Việt Nam.",
+    "life": "Ngay từ nhỏ, Tố Hữu đã sớm giác ngộ cách mạng. Ông tham gia hoạt động trong phong trào thanh niên cộng sản từ năm 1937, bị bắt và tù đày ở nhà lao Thừa Phủ và Buôn Ma Thuột. Sau Cách mạng tháng Tám năm 1945, ông đảm nhiệm nhiều chức vụ quan trọng trong bộ máy lãnh đạo của Đảng và Nhà nước, đồng thời không ngừng sáng tác, dùng thơ ca để cổ vũ tinh thần cách mạng và kháng chiến.",
+    "career": "Thơ Tố Hữu là sự kết hợp hài hòa giữa lý tưởng cách mạng và cảm xúc trữ tình. Mỗi tập thơ của ông gắn liền với một chặng đường lịch sử của dân tộc Việt Nam, phản ánh sâu sắc tâm hồn, tình cảm và niềm tin vào con đường cách mạng. Thơ ông mang âm hưởng dân ca, giàu nhạc điệu, gần gũi với quần chúng, được xem là đỉnh cao của thơ trữ tình chính trị Việt Nam hiện đại.",
+    "works": [
+      "Từ ấy (1937–1946)",
+      "Việt Bắc (1947–1954)",
+      "Gió lộng (1955–1961)",
+      "Ra trận (1962–1971)",
+      "Máu và Hoa (1972–1977)",
+      "Một tiếng đờn (1978–1992)",
+      "Ta với ta (1992–1999)"
+    ],
+    "genre": "Thơ cách mạng, thơ trữ tình chính trị",
+    "image": "assets/imgs/to-huu.png",
+    "place_id": "p3"
+  },
+
+  {
+    "id": "dang-huy-tru",
+    "name": "Đặng Huy Trứ",
+    "birth": "1825",
+    "death": "1874",
+    "bio": "Đặng Huy Trứ tự Hoàng Trung, hiệu Võng Tân, Tỉnh Trai, pháp danh Đức Hải, quê gốc làng Bát Vọng, sau sang ngụ ở làng Thanh Lương, xã Hương Xuân, huyện Hương Trà (nay là phường Kim Trà, thành phố Huế). Ông được biết đến là một nhà văn hóa, nhà cải cách, nhà thơ và vị quan thanh liêm thời Nguyễn.",
+    "life": "Thuở nhỏ, Đặng Huy Trứ đã sớm bộc lộ tư chất thông minh, đa cảm và cương trực. Năm 18 tuổi, ông đỗ cử nhân và tập sự tại Quốc Tử Giám, sau đó dạy học. Suốt cuộc đời, ông vừa là một nhà quân sự, nhà canh tân đất nước, vừa là một tấm gương về liêm chính, tận tụy vì dân vì nước. Ông từng đảm nhận nhiều chức vụ trong triều đình, để lại dấu ấn lớn trong lịch sử Việt Nam thế kỷ XIX.",
+    "career": "Đặng Huy Trứ được xem là một trong những người khởi xướng tư tưởng canh tân ở Việt Nam thời Nguyễn. Thơ văn của ông thể hiện lòng yêu nước, tinh thần nhân đạo và sự đồng cảm sâu sắc với nỗi khổ của nhân dân. Ông dùng ngòi bút để phản ánh hiện thực, giáo dục đạo đức và cổ vũ tinh thần đổi mới xã hội. Là một trí thức lớn, ông vừa có công trong lĩnh vực hành chính, vừa là cây bút xuất sắc của văn học trung đại.",
+    "works": [
+      "Đặng Dịch Trai ngôn hành lục",
+      "Hoàng Trung thi văn",
+      "Nhị vị tập",
+      "Nữ giới diễn ca",
+      "Tứ thập bát hiệu ký sự tân biên",
+      "Tùng chinh di quy",
+      "Việt sử thánh huấn diễn nghĩa"
+    ],
+    "genre": "Thơ Nho học, văn chính luận, thơ yêu nước",
+    "image": "assets/imgs/dang-huy-tru.png",
+    "place_id": "p4"
+  },
+
+  {
+    "id": "thanh-tinh",
+    "name": "Thanh Tịnh",
+    "birth": "1911",
+    "death": "1988",
+    "bio": "Thanh Tịnh tên thật là Trần Văn Ninh, sau đổi là Trần Thanh Tịnh, quê ở làng Dương Nỗ, huyện Phú Vang (nay là phường Dương Nỗ, thành phố Huế). Ông là nhà thơ, nhà văn nổi tiếng của nền văn học Việt Nam hiện đại, được biết đến với phong cách dịu dàng, đậm chất trữ tình và hương sắc quê hương.",
+    "life": "Thanh Tịnh từng học trung học, sau đó dạy học và viết văn, viết báo. Ông cộng tác với nhiều tờ báo như Thần Kinh tạp chí, Hà Nội báo, Tiểu thuyết Thứ Năm, Phong Hóa, Ngày Nay, Thanh Nghị, Tinh Hoa, Phụ Nữ Thời Đàm với nhiều bút danh khác nhau như Thinh Không, Pát-tê Thanh Thanh, Trịnh Thuần…",
+    "career": "Trước Cách mạng Tháng Tám năm 1945, Thanh Tịnh được biết đến chủ yếu qua các tập truyện ngắn mang đậm chất trữ tình. Ông là một trong những cây bút xuất sắc của dòng văn học lãng mạn Việt Nam. Văn chương Thanh Tịnh mang âm hưởng ca dao, thấm đượm tình quê, gợi cảm xúc nhẹ nhàng, sâu lắng và man mác buồn. Tác phẩm của ông không chú trọng vào cốt truyện mà nổi bật ở không khí và dư vị ngọt ngào, đượm buồn đặc trưng của xứ Huế.",
+    "works": [
+      "Hận chiến trường (thơ, 1937)",
+      "Quê mẹ (truyện ngắn, 1941)",
+      "Tôi đi học (truyện ngắn, 1941)",
+      "Chị và em (truyện ngắn, 1942)",
+      "Ngậm ngải tìm trầm (truyện ngắn, 1943)",
+      "Sức mồ hôi (ca dao, 1954)",
+      "Những giọt nước biển (truyện ngắn, 1956)",
+      "Thơ ca (thơ, 1980)",
+      "Thanh Tịnh đời và văn (1996)"
+    ],
+    "genre": "Thơ và văn xuôi trữ tình, văn học lãng mạn",
+    "image": "assets/imgs/thanh-tinh.png",
+    "place_id": "p5"
+  },
+  {
+    "id": "tran-thanh-mai",
+    "name": "Trần Thanh Mại",
+    "birth": "1911",
+    "death": "1965",
+    "bio": "Trần Thanh Mại là nhà văn, nhà nghiên cứu và phê bình văn học Việt Nam. Ông sinh tại làng Tiên Nộn, tổng Mậu Tài, huyện Phú Vang, tỉnh Thừa Thiên (nay thuộc phường Dương Nỗ, thành phố Huế).",
+    "life": "Sinh ra trong một gia đình quan lại, Trần Thanh Mại học giỏi nhưng không theo con đường khoa bảng. Ông chọn gắn bó trọn đời với văn chương và phê bình. Ông từng từ chối cưới con gái Thượng thư theo ý gia đình để kết hôn với một nghệ sĩ cung đình, thể hiện tính cách tự do, chân thành và yêu nghệ thuật.",
+    "career": "Trần Thanh Mại là một trong những cây bút phê bình tiên phong của văn học Việt Nam hiện đại. Ông kết hợp giữa nghiên cứu, tiểu luận và cảm xúc nghệ sĩ, tạo nên phong cách phê bình sâu sắc, tinh tế. Các tác phẩm của ông thể hiện cái nhìn nhân văn, sắc sảo và luôn đề cao giá trị chân – thiện – mỹ trong văn học.",
+    "works": [
+      "Trong dòng sông Vị",
+      "Tuy Lý Vương",
+      "Hàn Mặc Tử",
+      "Ngô Vương Quyền",
+      "Đời văn",
+      "Tú Xương, con người và nhà thơ"
+    ],
+    "genre": "Phê bình văn học, tiểu luận, truyện ký",
+    "image": "assets/imgs/tran-thanh-mai.png",
+    "place_id": "p5"
+  },
+  {
+    "id": "thao-am-nguyen-khoa-vy",
+    "name": "Thảo Am (Nguyễn Khoa Vy)",
+    "birth": "1881",
+    "death": "1968",
+    "bio": "Nguyễn Khoa Vy (1881–1968), biệt hiệu Thảo Am, quê làng An Cựu, sinh tại xã Phú Thượng, huyện Phú Vang (nay là phường Mỹ Thượng, thành phố Huế).",
+    "life": "Xuất thân trong gia đình Nho học, thuở nhỏ học chữ Hán rồi học ở Quốc Học. Làm công chức ngành hỏa xa, sau đó làm ở sở Bưu điện và nghỉ hưu năm 1936. Tham gia khởi nghĩa ở Huế, hoạt động trong phong trào văn nghệ kháng chiến, cộng tác với Hương Bình thi xã cùng Ưng Bình Thúc Giạ và những người bạn văn khác.",
+    "career": "Thảo Am vừa tinh thông Nho học lẫn chữ Pháp, vừa am hiểu văn chương cổ điển. Thơ ca của ông đậm chất dân gian, hài hước, giễu nhại, nhiều bài dùng tục ngữ, ca dao, chơi chữ và ẩn ý sâu sắc. Ông sáng tác nhiều thơ động viên phong trào yêu nước và phản kháng quân xâm lược; nhiều tác phẩm và câu thơ của ông lưu truyền trong dân chúng Huế.",
+    "works": [
+      "Các bài ca dân gian và thơ trào phúng truyền miệng",
+      "Câu đối, tục ngữ, vầng thơ Tết nổi tiếng (truyền khẩu)"
+    ],
+    "genre": "Thơ chữ Hán & chữ Quốc ngữ mang sắc dân gian, trào phúng",
+    "image": "assets/imgs/nguyen-khoa-vy.png",
+    "place_id": "p6"
+  },
+  {
+    "id": "vo-que",
+    "name": "Võ Quê",
+    "birth": "1948",
+    "death": "...",
+
+    "bio": "Võ Quê, quê làng An Truyền (làng Chuồn), xã Phú An, huyện Phú Vang (nay thuộc phường Mỹ Thượng, thành phố Huế).",
+    "life": "Bắt đầu sáng tác từ rất trẻ (khoảng 16 tuổi). Tham gia phong trào xuống đường của học sinh, sinh viên miền Nam (1966), từng bị địch bắt và giam giữ tại nhà tù Côn Đảo. Sau chiến tranh, ông tích cực phục hồi và phát triển nghệ thuật Huế, đặc biệt là ca Huế trên sông Hương.",
+    "career": "Võ Quê xuất bản nhiều tập thơ và tác phẩm văn học, thơ của ông đậm đà phong vị Huế, chứa chan tình cảm quê hương. Ông có chùm 13 bài thơ giới thiệu ẩm thực Huế (cơm hến, bánh bèo, bánh nậm, tôm chua…) rất được yêu thích. Sau 1975, ông đóng góp lớn vào phục hồi ca Huế và văn hóa dân gian địa phương.",
+    "works": [
+      "Ngợi ca (1993)",
+      "Hoa và Phong vị Huế (2010)",
+      "Côn Đảo (2011)",
+      "Chùm 13 bài thơ về ẩm thực Huế (cơm hến, bánh bèo, …)"
+    ],
+    "genre": "Thơ hiện đại mang đậm phong vị Huế, văn hóa dân gian",
+    "image": "assets/imgs/vo-que.png",
+    "place_id": "p6"
+  },
+
+  {
+    "id": "nguyen-khoa-diem",
+    "name": "Nguyễn Khoa Điềm",
+    "birth": "1943",
+    "death": "...",
+    "bio": "Nguyễn Khoa Điềm (sinh năm 1943) tại thôn Ưu Điềm, xã Phong Hòa, huyện Phong Điền (nay là phường Phong Dinh), thành phố Huế. Ông là cháu nội của Đạm Phương nữ sử, con của nhà cách mạng Hải Triều. Ngoài sáng tác thơ ca, ông từng giữ các chức vụ Trưởng Ban Tư tưởng – Văn hoá Trung ương, Ủy viên Bộ Chính trị Ban Chấp hành Trung ương Đảng Cộng sản Việt Nam khoá IX, Bộ trưởng Bộ Văn hoá – Thông tin.",
+    "life": "Ông là người trầm lặng, điềm đạm, nhiều suy tư. Mồ côi cha từ nhỏ, lại xa mẹ khi mới mười hai tuổi. Sau khi tốt nghiệp Đại học Sư phạm Hà Nội (1964), ông trở về quê hoạt động ở chiến trường Thừa Thiên Huế, từng bị bắt giam tại nhà lao Thừa Phủ cho đến chiến dịch Mậu Thân 1968 mới được giải thoát.",
+    "career": "Thơ Nguyễn Khoa Điềm mang đậm chất trữ tình chính trị. Trước 1975, thơ ông phản ánh hiện thực cách mạng và kháng chiến, mang âm hưởng sử thi, niềm tin và lý tưởng. Sau 1975, thơ ông thiên về cảm xúc cá nhân, ngôn từ giản dị, sâu sắc. Ông là một trong những gương mặt tiêu biểu của thế hệ nhà thơ thời chống Mỹ.",
+    "works": [
+      "Đất ngoại ô (1973)",
+      "Trường ca Mặt đường khát vọng (1974)",
+      "Ngôi nhà có ngọn lửa ấm (1986)",
+      "Thơ Nguyễn Khoa Điềm (1990)",
+      "Đất nước (trích Mặt đường khát vọng)",
+      "Khúc hát ru những em bé lớn trên lưng mẹ",
+      "Mẹ và quả"
+    ],
+    "genre": "Thơ hiện đại, trữ tình – chính luận",
+    "image": "assets/imgs/nguyen-khoa-diem.png ",
+    "place_id": "p7"
+  },
+  {
+    "id": "thanh-hai",
+    "name": "Thanh Hải",
+    "birth": "1930",
+    "death": "1980",
+    "bio": "Thanh Hải (1930 – 1980), tên thật là Phạm Bá Ngoãn, quê ở Phong Bình, huyện Phong Điền (nay là phường Phong Dinh), thành phố Huế. Ông là nhà thơ cách mạng nổi bật của nền thơ Việt Nam hiện đại.",
+    "life": "Ông tham gia hoạt động cách mạng từ kháng chiến chống Pháp và chống Mỹ, làm công tác văn nghệ, văn hoá – tuyên huấn tại chiến khu. Ông từng là Tổng thư ký Hội Văn nghệ Bình – Trị – Thiên và Ủy viên thường vụ Hội Liên hiệp Văn học Nghệ thuật Việt Nam.",
+    "career": "Thơ Thanh Hải chứa chan tinh thần cách mạng, tình yêu quê hương và cuộc sống. Ông nổi tiếng với phong cách thơ giản dị, sâu sắc, ngôn từ tinh tế, hình ảnh gần gũi. Bài 'Mùa xuân nho nhỏ' được xem là lời tri ân chân thành của một người nghệ sĩ trước Tổ quốc và cuộc đời.",
+    "works": [
+      "Ánh mắt (1956)",
+      "Những đồng chí trung kiên (1962)",
+      "Huế mùa xuân (Tập 1 – 1970, Tập 2 – 1975)",
+      "Mùa xuân nho nhỏ (1980)",
+      "Mùa xuân đất này (1982)"
+    ],
+    "genre": "Thơ cách mạng, thơ trữ tình",
+    "image": "assets/imgs/thanh-hai.png",
+    "place_id": "p7"
+  },
+  {
+    "id": "nguyen-lo-trach",
+    "name": "Nguyễn Lộ Trạch",
+    "birth": "1853",
+    "death": "1895",
+    "bio": "Nguyễn Lộ Trạch (1853–1895), quê làng Kế Môn, huyện Phong Điền (nay là phường Phong Phú, thị xã Phong Điền, thành phố Huế).",
+    "life": "Tuy không đỗ đạt qua con đường khoa cử, ông có sức học uyên thâm, tinh thần thực dụng và tư duy tiến bộ, được sĩ phu yêu nước đương thời kính trọng. Ông tích cực vận động duy tân, khuyến khích canh tân đất nước để thoát khỏi ách thực dân.",
+    "career": "Nguyễn Lộ Trạch là nhà văn chính luận, nhà yêu nước có tư tưởng canh tân sớm ở Việt Nam cuối thế kỷ XIX. Tác phẩm của ông thể hiện tinh thần độc lập dân tộc, cải cách xã hội và niềm tin vào trí thức bản địa. Ông có văn phong vừa sắc bén vừa trào lộng, giàu sức thuyết phục.",
+    "works": ["Quỳ ưu lục", "Kỳ am dã thoại", "Quốc ngữ thị phụ giai ẩn từ"],
+    "genre": "Văn nghị luận, thơ chính luận, văn yêu nước",
+    "image": "assets/imgs/no-picture.png",
+    "place_id": "p8"
+  },
+
+  {
+    "id": "ngo-kha",
+    "name": "Ngô Kha",
+    "birth": "1935",
+    "death": "1973",
+    "bio": "Ngô Kha sinh tại làng Thế Lại Thượng, phường Phú Hiệp (nay là phường Phú Xuân, thành phố Huế).",
+    "life": "Ông là người thầy yêu chính nghĩa, có sức ảnh hưởng lớn đến học trò nhờ phong cách dạy học gắn liền với nhận thức xã hội và tinh thần yêu nước. Ngoài nghề dạy học, ông còn là nhà thơ siêu thực, chịu ảnh hưởng tư tưởng phương Tây. Ông bị bắt và mất tích trong hoàn cảnh bi thảm, trở thành biểu tượng cho trí thức phản chiến miền Nam.",
+    "career": "Ngô Kha là nhà thơ, nhà giáo, nhà hoạt động xã hội. Thơ ông kết hợp giữa lãng mạn và triết lý, vừa đau đáu thời cuộc, vừa hướng đến hòa bình và nhân bản. Ông chủ trương làm thơ để phản ánh nỗi đau con người giữa chiến tranh và khao khát tự do.",
+    "works": [
+      "Hoa Cô Độc (1961)",
+      "Ngụ ngôn của người đãng trí",
+      "Bài ca tự quyết",
+      "Cho những người nằm xuống",
+      "Trường ca Hòa bình"
+    ],
+    "genre": "Thơ siêu thực, phản chiến, trữ tình triết lý",
+    "image": "assets/imgs/ngo-kha.png",
+    "place_id": "p9"
+  },
+
+  {
+    "id": "phan-van-dat",
+    "name": "Phan Văn Dật",
+    "birth": "1907",
+    "death": "1987",
+    "bio": "Thi sĩ Phan Văn Dật (1907–1987), dòng dõi thế gia, sinh tại phủ An Thường công chúa, làng Phú Xuân, huyện Hương Trà (nay thuộc phường Thuận Hóa, thành phố Huế).",
+    "life": "Học tại Trường Quốc học Huế đến hết bậc Thành chung, từng làm thư ký Sở Trước bạ Đà Nẵng (1927–1939), Nha Ngân khố Trung Kỳ và dạy học ở Huế (1939–1945), sau giảng dạy tại Viện Đại học Huế. Ông nghỉ hưu và mất tại Huế.",
+    "career": "Phan Văn Dật là thi sĩ tiêu biểu của phong trào Thơ mới ở Trung Kỳ. Ông có phong cách nhẹ nhàng, giản dị, thơ ông không rực rỡ, không bi lụy mà ấm áp và chân thành. Ông thường ký các bút danh Tiêu Lang, Thường Nga Phố, cộng tác với nhiều tạp chí lớn như Nam Phong, Thực nghiệp dân báo, Thần Kinh tạp chí, Tràng An báo, Khuyến học, Rạng Đông, Cười…",
+    "works": [
+      "Bâng khuâng (1935)",
+      "Diễm Dương trang (Giải thưởng Tự lực văn đoàn, 1935)",
+      "Những ngày vàng lụa (bản thảo)",
+      "Các bài thơ đăng trên Nam Phong, Tràng An, Thần Kinh tạp chí..."
+    ],
+    "genre": "Thơ mới, trữ tình nhân bản, gần gũi với đời sống và con người",
+    "image": "assets/imgs/phan-van-dat.png",
+    "place_id": "p10"
+  },
+
+  {
+    "id": "nguyen-cu-trinh",
+    "name": "Nguyễn Cư Trinh",
+    "birth": "1716",
+    "death": "1767",
+    "bio": "Nguyễn Cư Trinh, tên thật Nguyễn Đăng Nghi, hiệu Cư Trinh (sinh 1716 – mất 1767), sinh ra trong gia đình có truyền thống văn hóa ở xứ Đàng Trong.",
+    "life": "Thơ văn phát triển sớm; mười một tuổi đã biết làm thơ. Ông nổi tiếng trong vùng, hoạt động sáng tác chủ yếu dưới thời Lê mạt và triều các chúa Nguyễn ở Đàng Trong, được giới trí thức và người đương thời trọng vọng.",
+    "career": "Nguyễn Cư Trinh là một nhà thơ – học giả cả chữ Hán lẫn chữ Nôm. Tác phẩm của ông bộc lộ lòng yêu nước, tình thương dân và niềm tự hào về non sông. Ông để lại nhiều tác phẩm thi phú và văn học địa phương, được Lê Quý Đôn ca ngợi trong Phủ biên tạp lục.",
+    "works": [
+      "Đạm Am thi tập",
+      "Hạo Nhiên đường văn tập (hiện thất lạc)",
+      "Sãi Vãi",
+      "Hà Tiên thập vịnh",
+      "Quãng Ngãi thập nhị vịnh"
+    ],
+    "genre": "Thơ chữ Hán, thơ Nôm, thi pháp cổ điển",
+    "image": "assets/imgs/nguyen-cu-trinh.jpg",
+    "place_id": "p11"
+  }
+]

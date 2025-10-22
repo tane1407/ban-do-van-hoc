@@ -1,0 +1,253 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+#map {
+  width: 100%;
+  height: 100vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-desktop {
+    display: none !important;
+  }
+  .search-mobile {
+    display: flex !important;
+  }
+}
+@media (min-width: 769px) {
+  .search-desktop {
+    display: flex !important;
+  }
+  .search-mobile {
+    display: none !important;
+  }
+}
+
+/* Style chung cho 2 thanh tìm kiếm */
+.search-desktop,
+.search-mobile {
+  position: absolute;
+  z-index: 1000;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+/* Desktop search */
+.search-desktop {
+  top: 18px;
+  left: 72px;
+  width: 460px;
+  padding: 8px 12px;
+}
+.search-desktop .form-control {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Mobile search */
+.search-mobile {
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(92% - 24px);
+  padding: 8px 12px;
+}
+.search-mobile .form-control {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Icon */
+.search-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.search-desktop .form-control {
+  height: 38px;
+  font-size: 15px;
+}
+.search-mobile .form-control {
+  height: 36px;
+  font-size: 16px;
+}
+
+.btn-search {
+  border-radius: 999px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px !important;
+  padding: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+/* Marker label (tooltip permanent style) */
+/* Marker label (tooltip permanent style) */
+.leaflet-tooltip.place-label {
+  background: rgba(255, 255, 255, 0.98);
+  color: #222;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Remove default tooltip arrow */
+.leaflet-tooltip.place-label::before {
+  display: none;
+}
+
+/* Helper class to hide label (used when zoom too small) */
+.leaflet-tooltip.place-label.hidden {
+  display: none !important;
+}
+
+/* Optional: slight drop shadow for the divIcon wrapper */
+.marker-shadow svg {
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+}
+/* Sidebar open/close animation */
+/* Sidebar luôn hiện, dock ở phải */
+/* Sidebar: ẩn mặc định, sẽ hiện khi cần */
+.sidebar {
+  position: absolute;
+  right: 12px;
+  top: 70px;
+  z-index: 1250;
+  width: 340px;
+  max-width: 92%;
+  height: calc(100vh - 140px);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: none; /* <-- ẩn mặc định */
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Phần header + content */
+.sidebar .sidebar-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 10px;
+}
+.sidebar .sidebar-content {
+  padding: 12px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tùy chọn: chia cột danh sách tác giả (top) và thông tin chi tiết (bottom) */
+/* Giả sử bạn muốn danh sách tác giả chiếm 40% chiều cao, detail 60% */
+/* .sidebar .sidebar-content {
+ 
+} */
+.sidebar .authors-list {
+  max-height: 40%;
+  overflow: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 8px;
+}
+.sidebar .detail-panel {
+  padding-top: 8px;
+  overflow: auto;
+  flex: 1;
+}
+
+/* ---------- Author list small item (compact) ---------- */
+.author-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.06s ease;
+}
+
+.author-card:hover {
+  background: rgba(9, 132, 227, 0.04);
+}
+
+.author-card.active {
+  background: rgba(9, 132, 227, 0.08);
+  border-radius: 6px;
+}
+
+/* avatar */
+.author-card .avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+/* style cho avatar marker (author) */
+.leaflet-author-divicon { background: transparent; }
+.author-avatar img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* text block */
+.author-card .meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* allow text truncation */
+}
+
+/* name: bold, slightly larger */
+.author-card .meta .name {
+  font-weight: 700;
+  font-size: 1rem; /* ~16px */
+  color: #111;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* subtitle: small, muted */
+.author-card .meta .subtitle {
+  font-size: 0.85rem; /* ~13px */
+  color: #7a7a7a;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* optional short description (one line) under subtitle (smaller) */
+.author-card .meta .excerpt {
+  font-size: 0.82rem;
+  color: #444;
+  margin-top: 6px;
+  display: none; /* hide by default in compact list; enable if you want */
+}
+
+/* when sidebar narrow, allow name to wrap (if you want) */
+/* .author-card .meta .name { white-space: normal; } */
