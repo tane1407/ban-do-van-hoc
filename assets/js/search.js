@@ -3,8 +3,8 @@
 // Yêu cầu: LocalsModule, AuthorsModule (nếu có) và window.map (tuỳ chọn)
 
 (function () {
-  const LOCALS_URL = '/Data/locals.json';
-  const AUTHORS_URL = '/Data/authors.json';
+  const LOCALS_URL = './Data/locals.json';
+  const AUTHORS_URL = './Data/authors.json';
 
   let searchLocals = [];
   let searchAuthors = [];
