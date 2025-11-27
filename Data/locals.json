@@ -1,67 +1,67 @@
 [
   {
-    "id": "p1",
-    "name": "Đại nội, Hoàng Thành Huế",
+    "id": "dai-noi",
+    "name": "Đại Nội, Hoàng Thành Huế",
     "lat": 16.47019959144131,
     "lon": 107.57895887080768
   },
   {
-    "id": "p2",
+    "id": "dan-dien",
     "name": "Xã Đan Điền",
     "lat": 16.557995645839934,
     "lon": 107.4922151698896
   },
   {
-    "id": "p3",
+    "id": "quang-dien",
     "name": "Xã Quảng Điền",
     "lat": 16.574955505777925, 
     "lon": 107.5116922718367
   },
   {
-    "id": "p4",
+    "id": "kim-tra",
     "name": "Phường Kim Trà",
     "lat": 16.507058017229458,
     "lon": 107.50911031003677
   },
   {
-    "id": "p5",
+    "id": "duong-no",
     "name": "Phường Dương Nỗ",
     "lat": 16.517299031206708,
     "lon": 107.60157096633888
   },
   {
-    "id": "p6",
+    "id": "my-thuong",
     "name": "Phường Mỹ Thượng",
     "lat": 16.49549102747452,
     "lon": 107.60180557773171
   },
   {
-    "id": "p7",
+    "id": "phong-dinh",
     "name": "Phường Phong Dinh",
     "lat": 16.666107478149065,
     "lon": 107.34236205168112
   },
   {
-    "id": "p8",
+    "id": "phong-phu",
     "name": "Phường Phong Phú",
     "lat": 16.681886130090636,
     "lon": 107.41545771246378
   },
   {
-    "id": "p9",
+    "id": "phu-xuan",
     "name": "Phường Phú Xuân",
     "lat": 16.47818317364744, 
     "lon": 107.57940147125598
   },
   {
-    "id": "p10",
+    "id": "thuan-hoa",
     "name": "Phường Thuận Hóa",
     
     "lat": 16.46402841026679, 
     "lon": 107.59767944465352
   },
   {
-    "id": "p11",
+    "id": "huong-an",
     "name": "Phường Hương An",
     "lat": 16.486572103066802, 
     "lon": 107.5542492757886

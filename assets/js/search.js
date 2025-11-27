@@ -176,18 +176,36 @@
   }
 
   /* ---------- Search helpers ---------- */
+  function removeVietnameseTones(str) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D");
+  }
+
   function searchAuthorsByQuery(q) {
     if (!q) return [];
-    const t = q.trim().toLowerCase();
+    const t = removeVietnameseTones(q.trim().toLowerCase());
     if (!t) return [];
-    return searchAuthors.filter(a => (a.name||'').toLowerCase().includes(t)).slice(0, 8);
+    return searchAuthors
+      .filter(a => {
+        const name = removeVietnameseTones((a.name || '').toLowerCase());
+        return name.includes(t);
+      })
+      .slice(0, 8);
   }
 
   function searchPlacesByQuery(q) {
     if (!q) return [];
-    const t = q.trim().toLowerCase();
+    const t = removeVietnameseTones(q.trim().toLowerCase());
     if (!t) return [];
-    return searchLocals.filter(p => (p.name||'').toLowerCase().includes(t)).slice(0, 8);
+    return searchLocals
+      .filter(p => {
+        const name = removeVietnameseTones((p.name || '').toLowerCase());
+        return name.includes(t);
+      })
+      .slice(0, 8);
   }
 
   /* ---------- Xử lý Enter / xử lý input ---------- */
@@ -196,11 +214,11 @@
     if (!q) return;
 
     // ưu tiên match chính xác author
-    const exactAuthor = searchAuthors.find(a => (a.name||'').toLowerCase() === q.toLowerCase());
+    const exactAuthor = searchAuthors.find(a => removeVietnameseTones((a.name||'').toLowerCase()) === removeVietnameseTones(q.toLowerCase()));
     if (exactAuthor) { onSelectAuthor(exactAuthor); hideSuggestions(inputEl); return; }
 
     // ưu tiên match chính xác place
-    const exactPlace = searchLocals.find(p => (p.name||'').toLowerCase() === q.toLowerCase());
+    const exactPlace = searchLocals.find(p => removeVietnameseTones((p.name||'').toLowerCase()) === removeVietnameseTones(q.toLowerCase()));
     if (exactPlace) { onSelectPlace(exactPlace); hideSuggestions(inputEl); return; }
 
     // nếu không exact: lấy matches

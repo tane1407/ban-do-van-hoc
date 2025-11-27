@@ -1,18 +1,19 @@
 // assets/js/locals.js
-// Module quản lý các địa điểm (locals) và hiển thị marker + avatar tác giả khi click
+// Module quản lý các địa điểm (locals) và hiển thị marker + avatar tác giả khi zoom
 window.LocalsModule = (function () {
   const DATA_URL = './Data/locals.json';
   const AUTHORS_URL = './Data/authors.json';
 
-  const GLOBAL_MIN_ZOOM = 13;   // marker hiển khi zoom >= 13
+  const GLOBAL_MIN_ZOOM = 13;   // marker hiển thị khi zoom >= 14 (tương đương +3 lần)
   const ZOOM_ON_CLICK = 15;     // zoom target khi click marker
+  const AUTHOR_AVATAR_ZOOM = 16; // hiển thị avatar khi zoom >= 16
   const AUTHOR_AVATAR_SIZE = 44; // px
 
-  let locals = [];              // mảng địa điểm
-  const placesLayer = L.layerGroup(); // layer cho markers địa điểm
-  const authorMarkersGroup = L.layerGroup(); // layer cho avatar tác giả (xóa/ghi dễ dàng)
-  const idToMarker = {};        // map id -> marker
-  let localAuthors = null;      // fallback authors list nếu AuthorsModule không expose getAuthorsByPlace
+  let locals = [];              
+  const placesLayer = L.layerGroup(); 
+  const authorMarkersGroup = L.layerGroup(); 
+  const idToMarker = {};        
+  let localAuthors = null;      
   let currentAuthorPlaceId = null;
 
   /* ---------- Helpers ---------- */
@@ -23,7 +24,9 @@ window.LocalsModule = (function () {
 
   function escapeHtml(s) {
     if (s === null || s === undefined) return '';
-    return String(s).replace(/[&<>"'`]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;' })[m]);
+    return String(s).replace(/[&<>"'`]/g, m => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'
+    })[m]);
   }
 
   /* ---------- Load authors fallback (chỉ 1 lần) ---------- */
@@ -53,11 +56,7 @@ window.LocalsModule = (function () {
         // fallback xuống tiếp
       }
     }
-    // fallback: dùng localAuthors (có thể async)
-    if (localAuthors === null) {
-      // chưa load -> synchronous empty (caller có thể await showAuthorsAround which will call loadLocalAuthorsOnce)
-      return [];
-    }
+    if (localAuthors === null) return [];
     return localAuthors.filter(a => a.place_id === placeId);
   }
 
@@ -71,31 +70,25 @@ window.LocalsModule = (function () {
     currentAuthorPlaceId = null;
   }
 
-  // Show author avatars around a placeObj (arrange in circle); radiusPx in pixel
-  // This function is async because it may load authors fallback
+  // Hiển thị avatar tác giả quanh một địa điểm (xếp tròn)
   async function showAuthorsAround(placeObj, radiusPx = 90) {
     if (!placeObj || !placeObj.lat || !placeObj.lon) return;
     const map = ensureMap();
 
-    // Make sure authors data available
     if (!(window.AuthorsModule && typeof window.AuthorsModule.getAuthorsByPlace === 'function')) {
       await loadLocalAuthorsOnce();
     }
 
-    // get authors
     let authorsForPlace = getAuthorsForPlace(placeObj.id || placeObj.place_id);
-    // If fallback returned empty but module might be async loaded later, try AuthorsModule again
     if ((!authorsForPlace || authorsForPlace.length === 0) && window.AuthorsModule && typeof window.AuthorsModule.getAuthorsByPlace === 'function') {
       authorsForPlace = window.AuthorsModule.getAuthorsByPlace(placeObj.id || placeObj.place_id) || [];
     }
 
-    // if still none -> clear and return
     if (!authorsForPlace || authorsForPlace.length === 0) {
       clearAuthorMarkers();
       return;
     }
 
-    // prepare group
     clearAuthorMarkers();
     map.addLayer(authorMarkersGroup);
 
@@ -108,7 +101,7 @@ window.LocalsModule = (function () {
       if (n === 1) {
         pt = centerPoint;
       } else {
-        const angle = (i / n) * (Math.PI * 2) - Math.PI / 2; // start at top
+        const angle = (i / n) * (Math.PI * 2) - Math.PI / 2;
         const r = radiusPx;
         const dx = Math.round(Math.cos(angle) * r);
         const dy = Math.round(Math.sin(angle) * r);
@@ -116,11 +109,12 @@ window.LocalsModule = (function () {
       }
 
       const posLatLng = map.layerPointToLatLng(pt);
-
-      // build DivIcon for avatar
       const avatarHtml = `
-        <div class="author-avatar" title="${escapeHtml(author.name || '')}" style="width:${AUTHOR_AVATAR_SIZE}px;height:${AUTHOR_AVATAR_SIZE}px;border-radius:50%;overflow:hidden;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.25)">
-          <img src="${escapeHtml(author.image || 'assets/imgs/placeholder.jpg')}" style="width:100%;height:100%;object-fit:cover;display:block">
+        <div class="author-avatar" title="${escapeHtml(author.name || '')}" 
+          style="width:${AUTHOR_AVATAR_SIZE}px;height:${AUTHOR_AVATAR_SIZE}px;border-radius:50%;overflow:hidden;
+                 border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.25)">
+          <img src="${escapeHtml(author.image || 'assets/imgs/placeholder.jpg')}" 
+               style="width:100%;height:100%;object-fit:cover;display:block">
         </div>
       `;
       const icon = L.divIcon({
@@ -131,40 +125,14 @@ window.LocalsModule = (function () {
       });
 
       const aMarker = L.marker(posLatLng, { icon: icon, keyboard: false, title: author.name || '' });
-
-      // tooltip on hover (use bindTooltip)
       aMarker.bindTooltip(author.name || '', { direction: 'top', offset: [0, -6], permanent: false, opacity: 0.95 });
 
-      // click -> open author detail in sidebar
+      // click -> hiển thị chi tiết tác giả
       aMarker.on('click', () => {
-        // save current place for back
         try { localStorage.setItem('currentPlaceObj', JSON.stringify(placeObj)); } catch(e){}
-
-        // use AuthorsModule.showAuthorDetail if available
         if (window.AuthorsModule && typeof window.AuthorsModule.showAuthorDetail === 'function') {
           window.AuthorsModule.showAuthorDetail(author, document.getElementById('sidebar-content'));
-        } else {
-          // fallback minimal detail
-          const detail = document.getElementById('sidebar-content');
-          if (detail) detail.innerHTML = `<div style="padding:12px"><h4>${escapeHtml(author.name)}</h4><p>${escapeHtml(author.bio||'')}</p></div>`;
         }
-
-        // If list present, highlight in list (if module supports)
-        if (window.AuthorsModule && typeof window.AuthorsModule.highlightAuthorInList === 'function') {
-          // ensure list rendered
-          if (document.getElementById('sidebar-authors-list')?.children.length === 0) {
-            if (typeof window.AuthorsModule.renderAuthorsList === 'function') {
-              window.AuthorsModule.renderAuthorsList(placeObj);
-              setTimeout(() => window.AuthorsModule.highlightAuthorInList(author.id), 80);
-            } else {
-              window.AuthorsModule.highlightAuthorInList(author.id);
-            }
-          } else {
-            window.AuthorsModule.highlightAuthorInList(author.id);
-          }
-        }
-
-        // show sidebar
         const sb = document.getElementById('sidebar');
         if (sb) sb.style.display = 'flex';
       });
@@ -175,7 +143,7 @@ window.LocalsModule = (function () {
     currentAuthorPlaceId = placeObj.id || placeObj.place_id;
   }
 
-  /* ---------- Load locals and create markers ---------- */
+  /* ---------- Load locals và tạo marker ---------- */
   function loadLocals() {
     const map = ensureMap();
     placesLayer.addTo(map);
@@ -186,49 +154,35 @@ window.LocalsModule = (function () {
         locals = Array.isArray(arr) ? arr : [];
 
         locals.forEach(item => {
-          const mk = L.marker([item.lat, item.lon], { title: item.name });
-          mk.bindPopup(`<div style="min-width:180px"><b>${escapeHtml(item.name)}</b></div>`);
+          // ----- Custom marker có tên địa phương -----
+          const markerHtml = `
+            <div class="custom-marker">
+              <div class="marker-dot"></div>
+              <span class="marker-label">${escapeHtml(item.name)}</span>
+            </div>
+          `;
+          const icon = L.divIcon({
+            html: markerHtml,
+            className: 'custom-marker-icon',
+            iconSize: [30, 42],
+            iconAnchor: [15, 42]
+          });
 
-          // allow item.minZoomToShow override
-          mk._minZoomToShow = typeof item.minZoomToShow === 'number' ? item.minZoomToShow : GLOBAL_MIN_ZOOM;
+          const mk = L.marker([item.lat, item.lon], { icon, title: item.name });
+          mk._minZoomToShow = GLOBAL_MIN_ZOOM;
 
-          // on click -> zoom and show authors around
+          // click -> chỉ zoom map, KHÔNG hiển thị avatar hay sidebar
           mk.on('click', () => {
-            if (!map.hasLayer(mk)) mk.addTo(map);
             map.setView(mk.getLatLng(), ZOOM_ON_CLICK);
-            mk.openPopup();
-
-            // show avatars
-            // If AuthorsModule exists and authors may be async, showAuthorsAround handles fallback
-            showAuthorsAround(item);
-
-            // save current place for back
-            try { localStorage.setItem('currentPlaceObj', JSON.stringify(item)); } catch(e){}
-
-            // optionally render author list in sidebar
-            if (window.AuthorsModule && typeof window.AuthorsModule.renderAuthorsList === 'function') {
-              window.AuthorsModule.renderAuthorsList(item);
-            } else {
-              // ensure sidebar visible even if AuthorsModule not present
-              const sb = document.getElementById('sidebar');
-              if (sb) sb.style.display = 'flex';
-            }
           });
 
           placesLayer.addLayer(mk);
           if (item.id) idToMarker[item.id] = mk;
         });
 
-        // update initial visibility and listen zoom changes
         updateMarkerVisibility();
         map.on('zoomend', updateMarkerVisibility);
-
-        // hide author avatars when clicking map background (unless clicking a marker)
-        map.on('click', (ev) => {
-          // if clicked on map (not marker), clear avatars
-          // Leaflet passes event with originalEvent; we can check target layer, but easiest is clear
-          clearAuthorMarkers();
-        });
+        map.on('click', () => clearAuthorMarkers());
 
         return locals;
       })
@@ -238,25 +192,33 @@ window.LocalsModule = (function () {
       });
   }
 
+  /* ---------- Kiểm soát ẩn/hiện marker và avatar ---------- */
   function updateMarkerVisibility() {
     const map = ensureMap();
     const z = map.getZoom();
 
+    // Hiển thị marker địa phương khi zoom = 15
     placesLayer.eachLayer(mk => {
       const minZ = mk._minZoomToShow || GLOBAL_MIN_ZOOM;
-      if (z >= minZ) {
+      const labelEl = mk.getElement()?.querySelector('.marker-label');
+      if (z >= minZ && z < AUTHOR_AVATAR_ZOOM) {
         if (!map.hasLayer(mk)) map.addLayer(mk);
+        if (labelEl) labelEl.style.display = 'inline';
+      } else if (z >= AUTHOR_AVATAR_ZOOM) {
+        if (labelEl) labelEl.style.display = 'none';
       } else {
         if (map.hasLayer(mk)) map.removeLayer(mk);
       }
     });
 
-    // hide author avatars if zoomed out
-    if (z < ZOOM_ON_CLICK) {
+    // Hiển thị avatar tác giả khi zoom >= 16
+    if (z < AUTHOR_AVATAR_ZOOM) {
       clearAuthorMarkers();
-    } else {
-      // optional: if we previously showed avatars for a place and want to re-draw when zooming in,
-      // we could re-show them here. For now, do nothing (avatars show only on marker click).
+    } else if (z >= AUTHOR_AVATAR_ZOOM) {
+      const visiblePlaces = locals.filter(p => map.getBounds().contains([p.lat, p.lon]));
+      if (visiblePlaces.length > 0) {
+        showAuthorsAround(visiblePlaces[0]);
+      }
     }
   }
 

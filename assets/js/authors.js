@@ -1,9 +1,12 @@
 // assets/js/authors.js
-// Module quản lý tác giả và hiển thị vào sidebar (hiển thị CHI TIẾT đầy đủ khi xem author)
+// Module quản lý tác giả
+
 window.AuthorsModule = (function () {
   let authors = [];
 
-  // Load authors.json một lần
+  /* ===========================
+      LOAD authors.json
+  ============================ */
   (function loadAuthors() {
     fetch("./Data/authors.json")
       .then((res) => {
@@ -19,243 +22,225 @@ window.AuthorsModule = (function () {
       });
   })();
 
-  // Lấy danh sách tác giả theo place_id
+  /* ===========================
+      HELPERS
+  ============================ */
   function getAuthorsByPlace(placeId) {
     if (!placeId) return [];
     return authors.filter((a) => a.place_id === placeId);
   }
 
-  // Escape HTML để tránh XSS / hiển thị an toàn
   function escapeHtml(s) {
     if (s === null || s === undefined) return "";
-    return String(s).replace(
-      /[&<>"'`]/g,
-      (m) =>
-      ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;",
-        "`": "&#96;",
-      }[m])
-    );
+    return String(s).replace(/[&<>"'`]/g, (m) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+      "`": "&#96;",
+    }[m]));
   }
 
-  /* ====== Hiển thị CHI TIẾT tác giả (full) ======
-     - Hiển thị: image (to), name, birth-death, bio (toàn bộ), life, works (liệt kê)
-     - Có nút "Quay lại" để về danh sách tác giả của place hiện tại.
-  */
+  /* ==================================================
+     Render text blocks:
+     - Mảng → mỗi phần = 1 <ul> riêng
+     - Chuỗi nhiều dòng → tách mỗi dòng = 1 <ul>
+     - Chuỗi 1 dòng → hiển thị bình thường
+  =================================================== */
+  function renderTextBlocks(data) {
+    if (!data) return "";
+
+    // ✅ Array → mỗi block = 1 <ul>
+    if (Array.isArray(data)) {
+      return data
+        .map(block => `
+          <ul style="margin:8px 0 0 22px; padding:0">
+            <li>${escapeHtml(block)}</li>
+          </ul>
+        `)
+        .join("");
+    }
+
+    // ✅ String
+    if (typeof data === "string") {
+      const lines = data
+        .split(/\r?\n/)
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      // nhiều dòng → nhiều <ul>
+      if (lines.length > 1) {
+        return lines
+          .map(line => `
+            <ul style="margin:8px 0 0 22px; padding:0">
+              <li>${escapeHtml(line)}</li>
+            </ul>
+          `)
+          .join("");
+      }
+
+      // 1 dòng
+      return `<div>${escapeHtml(data)}</div>`;
+    }
+
+    return "";
+  }
+
+  /* ===========================
+        CHI TIẾT TÁC GIẢ
+  ============================ */
   function showAuthorDetail(author, containerEl) {
     if (!author) return;
     if (!containerEl) containerEl = document.getElementById("sidebar-content");
     if (!containerEl) return;
 
+    const birthDeath = `${escapeHtml(author.birth || "")}${
+      author.birth && author.death ? " - " : ""
+    }${escapeHtml(author.death || "")}`;
+
     const imgHtml = author.image
-      ? `<img src="${escapeHtml(author.image)}" alt="${escapeHtml(
-        author.name
-      )}" style="width:100%;border-radius:8px;margin-top:8px">`
+      ? `
+        <div style="text-align:center; margin:16px 0">
+          <img src="${escapeHtml(author.image)}"
+            style="width:240px; border-radius:6px;
+                   box-shadow:0 2px 6px rgba(0,0,0,.25)">
+        </div>
+      `
       : "";
-    const birthDeath = `${escapeHtml(author.birth || "")}${author.birth && author.death ? " - " : ""
-      }${escapeHtml(author.death || "")}`;
 
-    // works: nếu có mảng -> liệt kê
-    let worksHtml = "";
-    if (author.works && Array.isArray(author.works) && author.works.length) {
-      worksHtml = `<div style="margin-top:12px"><strong>Tác phẩm chính:</strong><ul style="margin-top:6px; padding-left:18px;">${author.works
-        .map((w) => `<li>${escapeHtml(w)}</li>`)
-        .join("")}</ul></div>`;
-    }
-
-    // life và bio: hiển thị đầy đủ (có thể nhiều đoạn)
     const bioHtml = author.bio
-      ? `<div style="margin-top:10px;white-space:pre-line">${escapeHtml(
-        author.bio
-      )}</div>`
+      ? `
+        <div style="margin-top:14px; text-align:justify">
+          <span style="color:#b30000; font-weight:bold">Tiểu sử:</span>
+          ${renderTextBlocks(author.bio)}
+        </div>
+      `
       : "";
+
     const lifeHtml = author.life
-      ? `<div style="margin-top:10px"><strong>Cuộc đời:</strong><div style="margin-top:6px; white-space:pre-line">${escapeHtml(
-        author.life
-      )}</div></div>`
+      ? `
+        <div style="margin-top:14px; text-align:justify">
+          <span style="color:#b30000; font-weight:bold">Cuộc đời:</span>
+          ${renderTextBlocks(author.life)}
+        </div>
+      `
+      : "";
+
+    const careerHtml = author.career
+      ? `
+        <div style="margin-top:14px; text-align:justify">
+          <span style="color:#b30000; font-weight:bold">Sự nghiệp thơ văn:</span>
+
+          ${
+            author.career.works
+              ? `
+                <div style="margin-top:8px">
+                  <b>Tác phẩm:</b>
+                  ${renderTextBlocks(author.career.works)}
+                </div>
+              `
+              : ""
+          }
+
+          ${
+            author.career.style
+              ? `
+                <div style="margin-top:8px">
+                  <b>Đặc điểm thơ văn:</b>
+                  ${renderTextBlocks(author.career.style)}
+                </div>
+              `
+              : ""
+          }
+        </div>
+      `
       : "";
 
     containerEl.innerHTML = `
-      <div style="padding:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div>
-            <h4 style="margin:0 0 6px 0">${escapeHtml(author.name)}</h4>
-            <small style="color:#666">${birthDeath}</small>
-          </div>
+      <div style="padding:15px; font-size:16px; line-height:1.65">
+
+        <h2 style="
+          margin:0;
+          font-weight:bold;
+          color:#b30000;
+          font-size:26px;
+          text-transform:uppercase
+        ">
+          ${escapeHtml(author.name)}
+        </h2>
+
+        <div style="margin-top:4px; font-size:17px; color:#222">
+          ${birthDeath}
         </div>
+
         ${imgHtml}
         ${bioHtml}
         ${lifeHtml}
-        ${worksHtml}
-
-        <div style="margin-top:14px; display:flex; gap:8px; align-items:center;">
-          <button id="author-back" class="btn btn-sm btn-outline-secondary">← Quay lại</button>
-          ${author.source
-        ? `<a href="${escapeHtml(
-          author.source
-        )}" target="_blank" rel="noopener" class="btn btn-sm btn-link">Nguồn</a>`
-        : ""
-      }
-        </div>
+        ${careerHtml}
       </div>
     `;
-
-    // Bắt sự kiện back (nếu element tồn tại)
-    const back = document.getElementById("author-back");
-    if (back) {
-      back.onclick = () => {
-        const placeRaw = localStorage.getItem("currentPlaceObj");
-        if (placeRaw) {
-          try {
-            const placeObj = JSON.parse(placeRaw);
-            renderAuthorsList(placeObj); // render lại danh sách tác giả cho địa điểm đó
-          } catch (e) {
-            // fallback: chỉ đóng sidebar
-            closeSidebar();
-          }
-        } else {
-          // nếu không có place hiện hành thì đóng sidebar
-          closeSidebar();
-        }
-      };
-    }
-
-    openSidebar();
   }
 
-  /* ====== Render danh sách tác giả (compact list) ======
-     - Tạo các .author-card (avatar tròn, tên, subtitle)
-     - Không auto mở detail; default detail là tóm tắt số lượng
-     - Dùng event delegation (1 listener) để xử lý click trên list
-  */
-  function renderAuthorsList(placeObj) {
-    const authorsListEl = document.getElementById("sidebar-authors-list");
+  /* ===========================
+        DANH SÁCH TÁC GIẢ
+  ============================ */
+  function renderAuthorsForPlace(placeObj) {
     const detailEl = document.getElementById("sidebar-content");
     const titleEl = document.getElementById("sidebar-title");
-    if (!authorsListEl || !detailEl || !titleEl || !placeObj) return;
+    if (!placeObj || !detailEl || !titleEl) return;
 
     titleEl.textContent = placeObj.name || "Thông tin địa điểm";
-    authorsListEl.innerHTML = "";
-    detailEl.innerHTML = "";
 
-    const list = getAuthorsByPlace(placeObj.id || placeObj.place_id) || [];
-
+    const list = getAuthorsByPlace(placeObj.id || placeObj.place_id);
     if (!list.length) {
-      detailEl.innerHTML = `<div style="padding:12px">Không có thông tin chi tiết.</div>`;
+      detailEl.innerHTML = `<div style="padding:12px">Không có tác giả tại địa điểm này.</div>`;
       openSidebar();
       return;
     }
 
-    // Build compact list
-    list.forEach((a) => {
-      const subtitleText =
-        placeObj && placeObj.name ? placeObj.name : a.place_id || "";
-      const item = document.createElement("div");
-      item.className = "author-card";
-      item.dataset.authorId = a.id;
-      item.innerHTML = `
-        <img class="avatar" src="${escapeHtml(
-        a.image || "assets/imgs/placeholder.jpg"
-      )}" alt="${escapeHtml(a.name)}" />
-        <div class="meta">
-          <div class="name">${escapeHtml(a.name)}</div>
-          <div class="subtitle">${escapeHtml(subtitleText)}</div>
+    detailEl.innerHTML = list
+      .map(a => `
+        <div style="border-bottom:1px solid #ddd; padding:12px 0">
+          <h4 style="margin:0">${escapeHtml(a.name)}</h4>
+          <small style="color:#666">
+            ${escapeHtml(a.birth || "")}${a.birth && a.death ? " - " : ""}${escapeHtml(a.death || "")}
+          </small>
+
+          ${a.image ? `<img src="${escapeHtml(a.image)}"
+            style="width:100%; border-radius:8px; margin-top:8px">` : ""}
+
+          ${a.bio ? `<div style="margin-top:8px; text-align:justify">
+            ${renderTextBlocks(a.bio)}
+          </div>` : ""}
         </div>
-      `;
-      authorsListEl.appendChild(item);
-    });
-
-    // Default detail: summary tóm tắt (không mở detail nào)
-    detailEl.innerHTML = `
-      <div style="padding:12px">
-        <h6 style="margin-top:0">Thông tin chi tiết</h6>
-        <p>Hiển thị <strong>${list.length
-      }</strong> tác giả tại <strong>${escapeHtml(
-        placeObj.name
-      )}</strong>.</p>
-      </div>
-    `;
-
-    // Gắn handler delegated nếu chưa gắn
-    attachDelegatedHandlerOnce();
+      `)
+      .join("");
 
     openSidebar();
   }
 
-  /* ====== Delegation: xử lý click trên authors-list (gắn 1 lần) ====== */
-  let _delegatedAttached = false;
-  function attachDelegatedHandlerOnce() {
-    if (_delegatedAttached) return;
-    _delegatedAttached = true;
-    const authorsListEl = document.getElementById("sidebar-authors-list");
-    if (!authorsListEl) return;
-    authorsListEl.addEventListener("click", function (ev) {
-      const card = ev.target.closest(".author-card");
-      if (!card) return;
-      const aid = card.dataset.authorId;
-      if (!aid) return;
-
-      // Mark active
-      authorsListEl
-        .querySelectorAll(".author-card")
-        .forEach((r) => r.classList.remove("active"));
-      card.classList.add("active");
-
-      // Find author and show detail
-      const author = authors.find((x) => x.id === aid);
-      if (author) {
-        showAuthorDetail(author, document.getElementById("sidebar-content"));
-      }
-    });
-  }
-
-  /* ====== Utility: highlight và cuộn tới 1 author trong list ====== */
-  function highlightAuthorInList(authorId) {
-    const authorsListEl = document.getElementById("sidebar-authors-list");
-    if (!authorsListEl) return false;
-    const target = authorsListEl.querySelector(
-      `.author-card[data-author-id="${authorId}"]`
-    );
-    if (!target) return false;
-    // remove old active
-    authorsListEl
-      .querySelectorAll(".author-card")
-      .forEach((r) => r.classList.remove("active"));
-    target.classList.add("active");
-    // scroll to view
-    target.scrollIntoView({ behavior: "smooth", block: "center" });
-    // show detail
-    const author = authors.find((a) => a.id === authorId);
-    if (author)
-      showAuthorDetail(author, document.getElementById("sidebar-content"));
-    return true;
-  }
-
-  /* ====== Open / Close sidebar ====== */
+  /* ===========================
+        SIDEBAR
+  ============================ */
   function openSidebar() {
     const sb = document.getElementById("sidebar");
     if (sb) sb.style.display = "flex";
   }
+
   function closeSidebar() {
     const sb = document.getElementById("sidebar");
     if (sb) sb.style.display = "none";
   }
 
-  // Close button (nếu có)
   document
     .getElementById("sidebar-close")
     ?.addEventListener("click", closeSidebar);
 
-  // Expose public API
   return {
     getAuthorsByPlace,
-    renderAuthorsList,
+    renderAuthorsForPlace,
     showAuthorDetail,
-    highlightAuthorInList,
     openSidebar,
     closeSidebar,
   };

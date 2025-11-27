@@ -3,19 +3,43 @@
 
 (function () {
   // tạo map global
-  window.map = L.map('map', { zoomControl: false }).setView([16.470, 107.580], 11);
+  window.map = L.map('map', { zoomControl: false }).setView([16.470, 107.580], 12);
 
   // zoom control bottomleft
   L.control.zoom({ position: 'bottomleft' }).addTo(window.map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-  // tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(window.map);
 
-  // optional: basic map events or helpers
-  window.map.whenReady(() => {
-    console.info('Map is ready.');
+  fetch('/assets/js/vn.json')
+  .then(res => res.json())
+  .then(data => {
+    // Lọc ra tỉnh Thừa Thiên Huế
+    console.log(data.features.map(f => f.properties.name));
+    const hue = data.features.filter(
+      f => f.properties.name.includes('Thua_Thien_Hue')
+    );
+
+    // Thêm vào bản đồ
+    L.geoJSON(hue, {
+      style: {
+        color: '#e63946',   
+        weight: 2,
+        fill:false,
+        fillOpacity: 0.5
+      },
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(`<b>${feature.properties.name}</b>`);
+      }
+    }).addTo(map);
+
+console.log('GeoJSON loaded:', hue);
+
+    // Căn bản đồ khớp vùng Huế
+    const layer = L.geoJSON(hue);
+    map.fitBounds(layer.getBounds());
   });
 
 })();
+
+
+
