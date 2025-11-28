@@ -223,10 +223,18 @@ window.AuthorsModule = (function () {
   /* ===========================
         SIDEBAR
   ============================ */
-  function openSidebar() {
-    const sb = document.getElementById("sidebar");
-    if (sb) sb.style.display = "flex";
+ function openSidebar() {
+  const sb = document.getElementById("sidebar");
+  if (!sb) return;
+
+  sb.style.display = "flex";
+
+  if (window.innerWidth < 768) {
+    sb.classList.remove("full");
+    sb.classList.add("mini");
   }
+}
+
 
   function closeSidebar() {
     const sb = document.getElementById("sidebar");
@@ -244,4 +252,40 @@ window.AuthorsModule = (function () {
     openSidebar,
     closeSidebar,
   };
+})();
+(function enableMobileSwipeSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const header = document.querySelector(".sidebar-header");
+  if (!sidebar || !header) return;
+
+  let startY = 0;
+  let currentY = 0;
+
+  header.addEventListener("touchstart", e => {
+    startY = e.touches[0].clientY;
+  });
+
+  header.addEventListener("touchmove", e => {
+    currentY = e.touches[0].clientY;
+  });
+
+  header.addEventListener("touchend", () => {
+    const diff = currentY - startY;
+
+    // Vuốt lên
+    if (diff < -40) {
+      sidebar.classList.remove("mini");
+      sidebar.classList.add("full");
+    }
+
+    // Vuốt xuống
+    if (diff > 40) {
+      if (sidebar.classList.contains("full")) {
+        sidebar.classList.remove("full");
+        sidebar.classList.add("mini");
+      } else {
+        sidebar.style.display = "none";
+      }
+    }
+  });
 })();
