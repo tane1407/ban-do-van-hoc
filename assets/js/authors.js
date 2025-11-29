@@ -18,9 +18,6 @@ window.AuthorsModule = (function () {
       });
   })();
 
-  /* ===========================
-      HELPERS
-  ============================ */
   function getAuthorsByPlace(placeId) {
     if (!placeId) return [];
     return authors.filter((a) => a.place_id === placeId);
@@ -38,12 +35,6 @@ window.AuthorsModule = (function () {
     }[m]));
   }
 
-  /* ==================================================
-     Render text blocks:
-     - Array → mỗi phần tử = 1 <ul> riêng
-     - String nhiều dòng → mỗi dòng = 1 <ul>
-     - String 1 dòng → hiển thị thường
-  =================================================== */
   function renderTextBlocks(data) {
     if (!data) return "";
 
@@ -77,9 +68,7 @@ window.AuthorsModule = (function () {
     return "";
   }
 
-  /* ===========================
-        CHI TIẾT TÁC GIẢ
-  ============================ */
+  /*CHI TIẾT*/
   function showAuthorDetail(author, containerEl) {
     if (!author) return;
     if (!containerEl) containerEl = document.getElementById("sidebar-content");
@@ -156,9 +145,6 @@ window.AuthorsModule = (function () {
     `;
   }
 
-  /* ===========================
-        DANH SÁCH TÁC GIẢ
-  ============================ */
   function renderAuthorsForPlace(placeObj) {
     const detailEl = document.getElementById("sidebar-content");
     const titleEl = document.getElementById("sidebar-title");
@@ -197,9 +183,7 @@ window.AuthorsModule = (function () {
     openSidebar();
   }
 
-  /* ===========================
-        SIDEBAR
-  ============================ */
+  /*Sidebar*/
   function openSidebar() {
     const sb = document.getElementById("sidebar");
     if (sb) sb.style.display = "flex";
