@@ -38,8 +38,20 @@
 
       console.log("GeoJSON loaded:", hue);
 
-      // Căn bản đồ khớp vùng Huế
+      // Lấy bounds của vùng Huế
       const layer = L.geoJSON(hue);
-      map.fitBounds(layer.getBounds());
+      const bounds = layer.getBounds();
+
+      // Căn bản đồ vừa khít với vùng Huế
+      map.fitBounds(bounds);
+
+      // Kiểm tra nếu là mobile (chiều rộng < 768px)
+      if (window.innerWidth < 768) {
+        const currentZoom = map.getZoom();
+        map.setZoom(currentZoom + 0.5); // zoom thêm 0.5 cấp
+      }
+
+      console.log("GeoJSON loaded:", hue);
+      
     });
 })();

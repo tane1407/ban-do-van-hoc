@@ -4,9 +4,9 @@ window.LocalsModule = (function () {
   const DATA_URL = "./Data/locals.json";
   const AUTHORS_URL = "./Data/authors.json";
 
-  const GLOBAL_MIN_ZOOM = 13; // marker hiển thị khi zoom >= 14 (tương đương +3 lần)
-  const ZOOM_ON_CLICK = 15; // zoom target khi click marker
-  const AUTHOR_AVATAR_ZOOM = 16; // hiển thị avatar khi zoom >= 16
+  const GLOBAL_MIN_ZOOM = 13; // marker hiển thị khi zoom >= 13 (tương đương +3 lần)
+  const ZOOM_ON_CLICK = 14; // zoom target khi click marker
+  const AUTHOR_AVATAR_ZOOM = 14; // hiển thị avatar khi zoom >= 16
   const AUTHOR_AVATAR_SIZE = 44; // px
 
   let locals = [];
